@@ -1,0 +1,19 @@
+Linux is an operating system (OS)—like Windows—but used mostly in:
+
+Servers
+Cloud (AWS, Azure, GCP)
+DevOps environments
+
+👉 Examples:
+
+Ubuntu
+Red Hat Enterprise Linux
+CentOS
+🔹 Real Dev Perspective
+
+Linux = kernel + tools
+
+Kernel → core (memory, CPU, hardware control)
+Tools → commands (ls, cd, vi, etc.)
+
+👉 When you SSH into a server in AWS → you are using Linux.
