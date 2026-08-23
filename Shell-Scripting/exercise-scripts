@@ -1,0 +1,6 @@
+--------- Read Script ---------
+echo "Enter your name ?"
+read name
+echo "Welcome Mr/Mrs $name to learning"
+
+-------------------------------
