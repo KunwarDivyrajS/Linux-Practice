@@ -1,6 +1,79 @@
---------- Read Script ---------
+--------------- Read Script -------------------------
 echo "Enter your name ?"
 read name
 echo "Welcome Mr/Mrs $name to learning"
 
--------------------------------
+-----------------------------------------------------
+--------------- Exercise Script ---------------------
+#! /bin/bash
+echo "Date and Time $(date)">info
+echo "User Logged In $(w)">>info
+echo "Running Process $(ps)" >> info
+echo "========================================="
+echo "         Execution Completed             "
+echo "========================================="
+
+-----------------------------------------------------
+--------------- Disk Space Monitoring ---------------
+
+#!/bin/bash
+# Set the limit
+LIMIT=1
+# Check disk usage of root directory
+USAGE=$(df / | tail -1 | awk '{print $5}' | tr -d '%')
+echo "Current disk usage is $USAGE%"
+if [ $USAGE -ge $LIMIT ]
+then
+    echo "Warning! Disk space is more than 80%"
+else
+    echo "Disk space is OK"
+fi
+
+-------------------------------------------------
+------------- Service Health Check --------------
+
+#!/bin/bash
+SERVICE="nginx"
+if systemctl is-active --quiet $SERVICE
+then
+    echo "$SERVICE is running"
+else
+    echo "$SERVICE is not running"
+    echo "Starting $SERVICE..."
+    systemctl start $SERVICE
+    echo "$SERVICE started successfully"
+	
+------------------------------------------------	
+------------ Health Check Monitor --------------
+
+#!/bin/bash
+
+# Sample script written for Part 4 of the RHCE series
+# This script will return the following set of system information:
+# -Hostname information:
+echo -e "\e[31;43m***** HOSTNAME INFORMATION *****\e[0m"
+hostnamectl
+echo ""
+# -File system disk space usage:
+echo -e "\e[31;43m***** FILE SYSTEM DISK SPACE USAGE *****\e[0m"
+df -h
+echo ""
+# -Free and used memory in the system:
+echo -e "\e[31;43m ***** FREE AND USED MEMORY *****\e[0m"
+free
+echo ""
+# -System uptime and load:
+echo -e "\e[31;43m***** SYSTEM UPTIME AND LOAD *****\e[0m"
+uptime
+echo ""
+# -Logged-in users:
+echo -e "\e[31;43m***** CURRENTLY LOGGED-IN USERS *****\e[0m"
+who
+echo ""
+# -Top 5 processes as far as memory usage is concerned
+echo -e "\e[31;43m***** TOP 5 MEMORY-CONSUMING PROCESSES *****\e[0m"
+ps -eo %mem,%cpu,comm --sort=-%mem | head -n 6
+echo ""
+echo -e "\e[1;32mDone.\e[0m"  
+
+-----------------------------------------------------
